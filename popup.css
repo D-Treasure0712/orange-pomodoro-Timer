@@ -7,36 +7,41 @@ body {
   place-items: center;
   width: 300px; /* 全体の横幅を60%に縮小 */
   margin: 1rem auto; /* 上下左右にマージンを追加 */
-  /* grid-template-columns: 1fr;*/ /* グリッドカラムを1列に変更 */
-  /*grid-template-rows: auto auto 1fr;*/ /* グリッドテンプレートの行を調整 */
+  grid-template-columns: 1fr; /* グリッドカラムを1列に変更 */
+  grid-template-rows: auto auto 1fr; /* グリッドテンプレートの行を調整 */
 }
+
+
 
 #selects > div {
   display: flex;
   justify-content: space-around; /* ボタンを等間隔で配置 */
-  /*margin-bottom: 1rem; /* 下部のマージンを追加 */
+  margin-bottom: 1rem; /* 下部のマージンを追加 */
 }
 
 .circle2 {
   width: 200px;
   height: 200px;
   display: grid;
-  /*grid-template-columns: 1fr;
-  grid-template-rows: 1fr;*/
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
   place-items: center;
   background-color: rgb(123, 123, 255); /* 円の背景色 */
   border-radius: 50%; /* 円形にする */
-  /*position: relative;
-  overflow: hidden;*/
-  /*margin-bottom: 1rem; /* 下部のマージンを追加 */
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 1rem; /* 下部のマージンを追加 */
   margin-top: 1rem; /* 上部のマージンを追加 */
 }
 
-#selected-task-display {
+ #selected-task-display {
   text-align: center; /* テキストを中央揃え */
   margin-bottom: 1rem; /* 下部のマージンを追加 */
 }
-
+.currentSeconds{
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
 #count_box {
   display: grid;
   place-items: center;
@@ -47,7 +52,10 @@ body {
   z-index: 1;
   margin-bottom: 1rem; /* 下部のマージンを追加 */
 }
-
+p{
+  color: black;
+  margin: 0;
+}
 h1 {
   text-align: center; /* テキストを中央揃え */
   margin-bottom: 1rem; /* 下部のマージンを追加 */
@@ -85,6 +93,7 @@ li {
   background-color: rgba(0, 0, 0, 0.5);
   justify-content: center;
   align-items: center;
+  z-index: 1000; /* 他の要素の上に表示するためにz-indexを高く設定 */
 }
 
 .dialog-content {
