@@ -1,10 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
-  var times = 60;
+  var times = 25 * 60; // 残り秒数 (25分)
   changeTimes(times);
   var reset_times = false;
+  var isTimerCompleted = false;
 
-  function changeTimes(time) {
-    updateCurrentSeconds(time);
+  function changeTimes(minutes) {
+    var seconds = minutes * 60;
+    updateCurrentSeconds(seconds);
   }
 
   function startAnimation() {
@@ -63,11 +65,9 @@ function changeAngle(angle, times_animat) {
 
   function smoothTransition() {
     var currentAngle = 0;
-    var times_animat = document.getElementById('time').value;
+    var times_animat = document.getElementById('time').value * 60; // 分をカウント時間の秒数に変換
     var duration = 1000 * times_animat;
-
     var startTime = performance.now();
-
     var animation = setInterval(function() {
       var elapsed = performance.now() - startTime;
       currentAngle = (360) * (elapsed / duration);
@@ -76,7 +76,14 @@ function changeAngle(angle, times_animat) {
       if (elapsed >= duration || !reset_times) {
         clearInterval(animation);
         updateCurrentSeconds(times_animat);
-        reset_angle();
+        if (times_animat === 0) {
+          isTimerCompleted = true;
+          var circleElement = document.querySelector('.circle');
+          circleElement.style.backgroundColor = '#f3c87d';
+          disableStartButton();
+        } else {
+          reset_angle();
+        }
         reset_times = false;
       }
     }, 1000 / 60);
