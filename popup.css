@@ -1,175 +1,104 @@
 :root {
   --radius: 200px; /* デフォルトの半径を定義 */
 }
+
 body {
   display: grid;
   place-items: center;
-  height: 140px;
-  width: 300px;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(5, 1fr);
-  margin: 0;
+  width: 80%; /* 全体の横幅を80%に縮小 */
+  margin: 1rem auto; /* 上下左右にマージンを追加 */
+  grid-template-columns: 1fr; /* グリッドカラムを1列に変更 */
+  grid-template-rows: auto auto 1fr; /* グリッドテンプレートの行を調整 */
 }
+
 #selects {
-  height: 100%;
-  width: 100%;
-  grid-column: 1/6;
-  grid-row: 1/2;
-  display: grid;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
+  display: flex;
+  justify-content: space-around; /* ボタンを等間隔で配置 */
+  margin-bottom: 1rem; /* 下部のマージンを追加 */
 }
-.circle {
-  width: 30px;
-  height: 30px;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr;
-  grid-column: 2/5;
-  grid-row: 2/5;
-  background-color: #ffff; /* 円の背景色 */
-  border-radius: 50%; /* 円形にする */
-  position: relative;
-}
+
 .circle2 {
   width: 200px;
   height: 200px;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
-  grid-column: 2/5;
-  grid-row: 2/5;
   background-color: rgb(123, 123, 255); /* 円の背景色 */
   border-radius: 50%; /* 円形にする */
   position: relative;
   overflow: hidden;
-}
-.triangle1{
-  height: auto;
-  width: auto;
-  display: grid;
-  grid-column: 1/2;
-  grid-row: 1/2;
-}
-.triangle2{
-  height: auto;
-  width: auto;
-  display: grid;
-  grid-column: 1/2;
-  grid-row: 1/2;
-}
-.triangle3{
-  height: auto;
-  width: auto;
-  display: grid;
-  grid-column: 1/2;
-  grid-row: 1/2;
-}
-.triangle4{
-  height: auto;
-  width: auto;
-  display: grid;
-  grid-column: 1/2;
-  grid-row: 1/2;
-}
-.triangle5{
-  height: auto;
-  width: auto;
-  display: grid;
-  grid-column: 1/2;
-  grid-row: 1/2;
-}
-.triangle6{
-  height: auto;
-  width: auto;
-  display: grid;
-  grid-column: 1/2;
-  grid-row: 1/2;
+  margin-bottom: 1rem; /* 下部のマージンを追加 */
 }
 
-.triangle1::before {
-  content: "";
-  width: 0;
-  height: 0;
-  grid-column: 1/2;
-  grid-row: 1/2;
-  transform: translate(calc(var(--radius) / 2), calc(var(--radius) / 2 - var(--radius) * 1.25 * cos(calc(var(--angle) * 1deg))));
-  transform-origin: left bottom; /* 中心を縦横の中心に設定 */
-  border-right: calc(var(--radius) * 1.25 * sin(calc(var(--angle) * 1deg))) solid transparent;
-  border-top: calc(var(--radius) * 1.25 * cos(calc(var(--angle) * 1deg))) solid #ffff;
+#selected-task-display {
+  text-align: center; /* テキストを中央揃え */
+  margin-bottom: 1rem; /* 下部のマージンを追加 */
 }
-.triangle2::before {
-  content: "";
-  width: 0;
-  height: 0;
-  grid-column: 1/2;
-  grid-row: 1/2;
-  transform-origin: left bottom; /* 中心を縦横の中心に設定 */
-  transform: translate(calc(var(--radius) / 2), calc(var(--radius) / 2 - var(--radius) * 1.25 * cos(calc(var(--angle) * 1deg)))) rotate(60deg);
-  border-right: calc(var(--radius) * 1.25 * sin(calc(var(--angle) * 1deg))) solid transparent;
-  border-top: calc(var(--radius) * 1.25 * cos(calc(var(--angle) * 1deg))) solid #ffff;
-}
-.triangle3::before {
-  content: "";
-  width: 0;
-  height: 0;
-  grid-column: 1/2;
-  grid-row: 1/2;
-  transform-origin: left bottom; /* 中心を縦横の中心に設定 */
-  transform: translate(calc(var(--radius) / 2), calc(var(--radius) / 2 - var(--radius) * 1.25 * cos(calc(var(--angle) * 1deg)))) rotate(120deg);
-  border-right: calc(var(--radius) * 1.25 * sin(calc(var(--angle) * 1deg))) solid transparent;
-  border-top: calc(var(--radius) * 1.25 * cos(calc(var(--angle) * 1deg))) solid #ffff;
-}
-.triangle4::before {
-  content: "";
-  width: 0;
-  height: 0;
-  grid-column: 1/2;
-  grid-row: 1/2;
-  transform-origin: left bottom; /* 中心を縦横の中心に設定 */
-  transform: translate(calc(var(--radius) / 2), calc(var(--radius) / 2 - var(--radius) * 1.25 * cos(calc(var(--angle) * 1deg)))) rotate(180deg);
-  border-right: calc(var(--radius) * 1.25 * sin(calc(var(--angle) * 1deg))) solid transparent;
-  border-top: calc(var(--radius) * 1.25 * cos(calc(var(--angle) * 1deg))) solid #ffff;
-}
-.triangle5::before {
-  content: "";
-  width: 0;
-  height: 0;
-  grid-column: 1/2;
-  grid-row: 1/2;
-  transform-origin: left bottom; /* 中心を縦横の中心に設定 */
-  transform: translate(calc(var(--radius) / 2), calc(var(--radius) / 2 - var(--radius) * 1.25 * cos(calc(var(--angle) * 1deg)))) rotate(240deg);
-  border-right: calc(var(--radius) * 1.25 * sin(calc(var(--angle) * 1deg))) solid transparent;
-  border-top: calc(var(--radius) * 1.25 * cos(calc(var(--angle) * 1deg))) solid #ffff;
-}
-.triangle6::before {
-  content: "";
-  width: 0;
-  height: 0;
-  grid-column: 1/2;
-  grid-row: 1/2;
-  transform-origin: left bottom; /* 中心を縦横の中心に設定 */
-  transform: translate(calc(var(--radius) / 2), calc(var(--radius) / 2 - var(--radius) * 1.25 * cos(calc(var(--angle) * 1deg)))) rotate(300deg);
-  border-right: calc(var(--radius) * 1.25 * sin(calc(var(--angle) * 1deg))) solid transparent;
-  border-top: calc(var(--radius) * 1.25 * cos(calc(var(--angle) * 1deg))) solid #ffff;
-}
-.currentSeconds{
-  grid-column: 1/2;
-  grid-row: 1/2;
-}
-#count_box{
+
+#count_box {
   display: grid;
   place-items: center;
   height: var(--radius);
   width: var(--radius);
-  grid-column: 2/5;
-  grid-row: 2/5;
   font-size: 20;
   font-weight: bold;
   z-index: 1;
+  margin-bottom: 1rem; /* 下部のマージンを追加 */
 }
-p{
-  color: black;
-  margin: 0;
+
+h1 {
+  text-align: center; /* テキストを中央揃え */
+  margin-bottom: 1rem; /* 下部のマージンを追加 */
+}
+
+form {
+  text-align: center; /* フォームの要素を中央揃え */
+  margin-bottom: 1rem; /* 下部のマージンを追加 */
+}
+
+#table {
+  background-color: skyblue;
+  width: 100%; /* 横幅を100%に変更 */
+  border-radius: 1rem;
+  margin-bottom: 1rem; /* 下部のマージンを追加 */
+}
+
+#table h2 {
+  text-align: center; /* テキストを中央揃え */
+  margin-top: 0.5rem; /* 上部のマージンを追加 */
+  margin-bottom: 0.5rem; /* 下部のマージンを追加 */
+}
+
+li {
+  margin: 0.5rem 0; /* 上下のマージンを追加 */
+}
+
+.dialog {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.dialog-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+#selected-task-display {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  z-index: 1;
 }

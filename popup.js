@@ -1,4 +1,116 @@
+const taskValue = document.getElementsByClassName('task_value')[0];
+const taskSubmit = document.getElementsByClassName('task_submit')[0];
+const taskList = document.getElementsByClassName('task_list')[0];
+const selectedTaskDisplay = document.getElementById('selected-task-display');
+let taskToDelete = null;
+
+// 追加ボタンを作成
+const addTasks = (task) => {
+  // 入力したタスクを追加・表示
+  const listItem = document.createElement('li');
+  const showItem = taskList.appendChild(listItem);
+  showItem.innerHTML = task;
+  
+
+  // タスクに削除ボタンを付与
+  const deleteButton = document.createElement('button');
+  const editButton = document.createElement('button');
+  const SelectButton = document.createElement('button');
+  deleteButton.innerHTML = 'Delete';
+  listItem.appendChild(deleteButton);
+  SelectButton.innerHTML = 'Select';
+  listItem.appendChild(SelectButton);
+  editButton.innerHTML = 'Edit';
+  listItem.appendChild(editButton);
+
+  // 削除ボタンをクリックし、イベントを発動（タスクが削除）
+  deleteButton.addEventListener('click', evt => {
+    evt.preventDefault();
+    taskToDelete = deleteButton;
+    confirmDialog.style.display = 'flex';
+    // deleteTasks(deleteButton);
+  });
+
+  // 選択ボタンをクリックし、イベントを発動
+  SelectButton.addEventListener('click', evt => {
+    evt.preventDefault();
+    displaySelectedTask(task);
+  });
+
+//編集機能（ボタン）
+  editButton.addEventListener('click', evt => {
+    evt.preventDefault();
+    editTasks(editButton);
+  });
+
+};
+
+// 選択されたタスク名を表示する関数
+function displaySelectedTask(task) {
+  selectedTaskDisplay.textContent = task;
+}
+
+
+
+// 削除ボタンにタスクを消す機能を付与
+const deleteTasks = (deleteButton) => {
+  const chosenTask = deleteButton.closest('li');
+  taskList.removeChild(chosenTask);
+  selectedTaskDisplay.textContent = ''; // 選択されたタスク名をクリア
+};
+
+// 編集機能
+const editTasks = (editButton) => {
+    const taskList = editButton.closest('li');
+    const taskText = taskList.firstChild.textContent;
+  
+    // プロンプトでタスクの新しい内容を入力
+    const newTaskText = prompt('新しいタスク内容を入力してください', taskText);
+  
+    // 新しい内容が入力された場合
+    if (newTaskText !== null && newTaskText.trim() !== '') {
+      // タスクの内容を更新
+      taskList.firstChild.textContent = newTaskText;
+    };
+};
+  
+// 追加ボタンをクリックし、イベントを発動（タスクが追加）
+taskSubmit.addEventListener('click', evt => {
+  evt.preventDefault();
+  const task = taskValue.value;
+  addTasks(task);
+  taskValue.value = '';
+});
+
+taskSubmit.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+      e.preventDefault();
+      const task = taskValue.value;
+      addTasks(task);
+      //taskValue.value = '';}
+  }
+});
+
+// 確認ダイアログのボタンのイベントリスナー
+confirmYes.addEventListener('click', () => {
+  deleteTasks(taskToDelete);
+  confirmDialog.style.display = 'none';
+});
+
+confirmNo.addEventListener('click', () => {
+  confirmDialog.style.display = 'none';
+});
+
 document.addEventListener('DOMContentLoaded', function() {
+
+/*
+  // 選択したタスクを取得して表示
+  chrome.storage.sync.get('selectedTask', function(data) {
+    const selectedTask = data.selectedTask || '';
+    selectedTaskElement.textContent = selectedTask;
+  });
+*/
+
   var times = 25 * 60; // 残り秒数 (25分)
   changeTimes(times);
   var reset_times = false;
@@ -94,4 +206,5 @@ function changeAngle(angle, times_animat) {
 
   startButton.addEventListener('click', startAnimation);
   resetButton.addEventListener('click', all_reset);
+
 });
