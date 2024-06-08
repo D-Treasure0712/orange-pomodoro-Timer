@@ -47,10 +47,49 @@ body {
   border-radius: 50%; /* 円形にする */
   position: relative;
   overflow: hidden;
-  margin-bottom: 1rem; /* 下部のマージンを追加 */
-  margin-top: 1rem; /* 上部のマージンを追加 */
 }
-
+.triangle1{
+  height: auto;
+  width: auto;
+  display: grid;
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+.triangle2{
+  height: auto;
+  width: auto;
+  display: grid;
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+.triangle3{
+  height: auto;
+  width: auto;
+  display: grid;
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+.triangle4{
+  height: auto;
+  width: auto;
+  display: grid;
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+.triangle5{
+  height: auto;
+  width: auto;
+  display: grid;
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+.triangle6{
+  height: auto;
+  width: auto;
+  display: grid;
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
 .triangle1::before {
   content: "";
   width: 0;
