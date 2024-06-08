@@ -28,7 +28,7 @@ body {
   grid-template-rows: 1fr;
   grid-column: 2/5;
   grid-row: 2/5;
-  background-color: #ffff; /* 円の背景色 */
+  background-color: #fff; /* 円の背景色 */
   border-radius: 50%; /* 円形にする */
   position: relative;
 }
@@ -40,7 +40,7 @@ body {
   grid-template-rows: 1fr;
   grid-column: 2/5;
   grid-row: 2/5;
-  background-color: rgb(123, 123, 255); /* 円の背景色 */
+  background-color: rgb(0, 103, 105); /* 円の背景色 */
   border-radius: 50%; /* 円形にする */
   position: relative;
   overflow: hidden;
@@ -97,7 +97,7 @@ body {
   transform: translate(calc(var(--radius) / 2), calc(var(--radius) / 2 - var(--radius) * 1.25 * cos(calc(var(--angle) * 1deg))));
   transform-origin: left bottom; /* 中心を縦横の中心に設定 */
   border-right: calc(var(--radius) * 1.25 * sin(calc(var(--angle) * 1deg))) solid transparent;
-  border-top: calc(var(--radius) * 1.25 * cos(calc(var(--angle) * 1deg))) solid #ffff;
+  border-top: calc(var(--radius) * 1.25 * cos(calc(var(--angle) * 1deg))) solid rgb(157, 222, 139);
 }
 .triangle2::before {
   content: "";
@@ -108,7 +108,7 @@ body {
   transform-origin: left bottom; /* 中心を縦横の中心に設定 */
   transform: translate(calc(var(--radius) / 2), calc(var(--radius) / 2 - var(--radius) * 1.25 * cos(calc(var(--angle) * 1deg)))) rotate(60deg);
   border-right: calc(var(--radius) * 1.25 * sin(calc(var(--angle) * 1deg))) solid transparent;
-  border-top: calc(var(--radius) * 1.25 * cos(calc(var(--angle) * 1deg))) solid #ffff;
+  border-top: calc(var(--radius) * 1.25 * cos(calc(var(--angle) * 1deg))) solid rgb(157, 222, 139);
 }
 .triangle3::before {
   content: "";
@@ -119,7 +119,7 @@ body {
   transform-origin: left bottom; /* 中心を縦横の中心に設定 */
   transform: translate(calc(var(--radius) / 2), calc(var(--radius) / 2 - var(--radius) * 1.25 * cos(calc(var(--angle) * 1deg)))) rotate(120deg);
   border-right: calc(var(--radius) * 1.25 * sin(calc(var(--angle) * 1deg))) solid transparent;
-  border-top: calc(var(--radius) * 1.25 * cos(calc(var(--angle) * 1deg))) solid #ffff;
+  border-top: calc(var(--radius) * 1.25 * cos(calc(var(--angle) * 1deg))) solid rgb(157, 222, 139);
 }
 .triangle4::before {
   content: "";
@@ -130,7 +130,7 @@ body {
   transform-origin: left bottom; /* 中心を縦横の中心に設定 */
   transform: translate(calc(var(--radius) / 2), calc(var(--radius) / 2 - var(--radius) * 1.25 * cos(calc(var(--angle) * 1deg)))) rotate(180deg);
   border-right: calc(var(--radius) * 1.25 * sin(calc(var(--angle) * 1deg))) solid transparent;
-  border-top: calc(var(--radius) * 1.25 * cos(calc(var(--angle) * 1deg))) solid #ffff;
+  border-top: calc(var(--radius) * 1.25 * cos(calc(var(--angle) * 1deg))) solid rgb(157, 222, 139);
 }
 .triangle5::before {
   content: "";
@@ -141,7 +141,7 @@ body {
   transform-origin: left bottom; /* 中心を縦横の中心に設定 */
   transform: translate(calc(var(--radius) / 2), calc(var(--radius) / 2 - var(--radius) * 1.25 * cos(calc(var(--angle) * 1deg)))) rotate(240deg);
   border-right: calc(var(--radius) * 1.25 * sin(calc(var(--angle) * 1deg))) solid transparent;
-  border-top: calc(var(--radius) * 1.25 * cos(calc(var(--angle) * 1deg))) solid #ffff;
+  border-top: calc(var(--radius) * 1.25 * cos(calc(var(--angle) * 1deg))) solid rgb(157, 222, 139);
 }
 .triangle6::before {
   content: "";
@@ -152,7 +152,7 @@ body {
   transform-origin: left bottom; /* 中心を縦横の中心に設定 */
   transform: translate(calc(var(--radius) / 2), calc(var(--radius) / 2 - var(--radius) * 1.25 * cos(calc(var(--angle) * 1deg)))) rotate(300deg);
   border-right: calc(var(--radius) * 1.25 * sin(calc(var(--angle) * 1deg))) solid transparent;
-  border-top: calc(var(--radius) * 1.25 * cos(calc(var(--angle) * 1deg))) solid #ffff;
+  border-top: calc(var(--radius) * 1.25 * cos(calc(var(--angle) * 1deg))) solid rgb(157, 222, 139);
 }
 .currentSeconds{
   grid-column: 1/2;
