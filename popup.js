@@ -15,20 +15,21 @@ document.addEventListener('DOMContentLoaded', function() {
   async function startAnimation() {
     if (!reset_times) {
       reset_times = true;
-      smoothTransition(times);
-      // let set = 1;
-      // let count_limit = set * 2;
-      // for(let count = 0; count < count_limit; count++){
-      //   if(interval_session == false){
-      //     smoothTransition(times);
-      //     await sleep(times*1000);
-      //     smoothTransition(times_interval);
-      //   }else{
-      //     smoothTransition(times_interval);
-      //     await sleep(times_interval*1000);
-      //   }
-      //   interval_session = !interval_session;
-      // }
+      // smoothTransition(times);
+      let set = 1;
+      let count_limit = set * 2;
+      for(let count = 0; count < count_limit; count++){
+        if(interval_session == false){
+          await smoothTransition(times);
+          await sleep(times*1000);
+          reset_times = true;
+          // await smoothTransition(times_interval);
+        }else{
+          await smoothTransition(times_interval);
+          // await sleep(times_interval*1000);
+        }
+        interval_session = !interval_session;
+      }
     }
   }
 
@@ -91,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
     reset_times = false;
   }
 
-  function smoothTransition(times_animat) {
+  async function smoothTransition(times_animat) {
     var currentAngle = 0;
     var duration = 1000 * times_animat;
     var startTime = performance.now();
@@ -105,9 +106,6 @@ document.addEventListener('DOMContentLoaded', function() {
         updateCurrentSeconds(times_animat);
         if (times_animat === 0) {
           isTimerCompleted = true;
-          var circleElement = document.querySelector('.circle');
-          circleElement.style.backgroundColor = '#f3c87d';
-          disableStartButton();
         } else {
           reset_angle();
         }
@@ -116,8 +114,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 1000 / 60);
   }
 
-  var startButton = document.querySelector('button[onclick="startAnimation()"]');
-  var resetButton = document.querySelector('button[onclick="all_reset()"]');
+  // var startButton = document.querySelector('button[onclick="startAnimation()"]');
+  // var resetButton = document.querySelector('button[onclick="all_reset()"]');
+  var startButton = document.getElementById('startStopButton');
+  var resetButton = document.getElementById('resetButton');
 
   startButton.addEventListener('click', startAnimation);
   resetButton.addEventListener('click', all_reset);
