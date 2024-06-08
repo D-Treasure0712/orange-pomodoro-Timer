@@ -12,6 +12,7 @@
       "128": "icon.png"
     }
   },
+  
   "web_accessible_resources": [
     "todolist.html"
   ],
@@ -26,6 +27,9 @@
       "js": ["popup.js"]
 
     }
-  ]
+  ],
   
+  "background": {
+    "scripts": ["background.js"]
+  }
 }

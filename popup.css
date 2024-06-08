@@ -25,18 +25,26 @@ body {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
-  place-items: center;
+  /* grid-column: 2/5; */
+  /* grid-row: 2/5; */
   background-color: rgb(123, 123, 255); /* 円の背景色 */
   border-radius: 50%; /* 円形にする */
   position: relative;
   overflow: hidden;
-  margin-bottom: 1rem; /* 下部のマージンを追加 */
-  margin-top: 1rem; /* 上部のマージンを追加 */
+  z-index: 1;
 }
-
- #selected-task-display {
-  text-align: center; /* テキストを中央揃え */
-  margin-bottom: 1rem; /* 下部のマージンを追加 */
+.circle {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  /* grid-column: 2/5; */
+  /* grid-row: 2/5; */
+  background-color: rgb(94, 71, 71); /* 円の背景色 */
+  border-radius: 50%; /* 円形にする */
+  position: relative;
+  z-index: 2;
 }
 .currentSeconds{
   grid-column: 1/2;
@@ -47,7 +55,7 @@ body {
   place-items: center;
   height: var(--radius);
   width: var(--radius);
-  font-size: 20;
+  font-size: 20px;
   font-weight: bold;
   z-index: 1;
   margin-bottom: 1rem; /* 下部のマージンを追加 */
@@ -105,11 +113,11 @@ li {
 
 #selected-task-display {
   position: absolute;
-  top: 50%;
+  top: 35%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 16px;
   font-weight: bold;
   color: #333;
-  z-index: 1;
+  z-index: 2;
 }

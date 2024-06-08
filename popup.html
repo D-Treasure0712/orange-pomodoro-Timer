@@ -8,18 +8,16 @@
 </head>
 <body>
     <div id="selects">
-        <div>
-            <button onclick="startAnimation()">Start Animation</button>
-            <button onclick="all_reset()">Reset Animation</button>
-        </div>
+
         <div>
             <label for="time">時間（分）：</label>
             <input type="number" id="time" name="time" min="1" max="99" value="25" oninput="changeTimes(this.value);">
         </div>
     </div>
-    
+    <div id="selected-task-display"></div> <!-- 選択されたタスク名を表示する要素 -->
     <div class="circle2">
-        <div id="selected-task-display"></div> <!-- 選択されたタスク名を表示する要素 -->
+        <p id="currentSeconds">0</p>
+        <div class="circle"></div>
         <div class="triangle1" id="triangle1"></div>
         <div class="triangle2" id="triangle2"></div>
         <div class="triangle3" id="triangle3"></div>
@@ -27,20 +25,24 @@
         <div class="triangle5" id="triangle5"></div>
         <div class="triangle6" id="triangle6"></div>
     </div>
-    <div class="circle"></div>
-    <div id="count_box">
-        <p id="currentSeconds">0</p>
+    
+    <!-- <div id="count_box"> -->
+
+    <!-- </div> -->
+    <div>
+        <button onclick="startAnimation()">Start Animation</button>
+        <button onclick="all_reset()">Reset Animation</button>
     </div>
 
-    <h1>やること</h1>     
+    <h1>To do list</h1>     
 
     <form>
       <input class="task_value" type="text" />
       
-      <button class="task_submit" type="button">タスクの追加</button>
+      <button class="task_submit" type="button"><font color="#0000FF">add task</font></button>
     </form>
     <div id="table">
-      <h2>残りタスク</h2>
+      <h2>Task List</h2>
       <ul class="task_list"></ul>
     </div>
     <div id="confirmDialog" class="dialog">
@@ -48,9 +50,7 @@
         <p>本当に削除しますか？</p>
         <button id="confirmYes" type="button">Yes</button>
         <button id="confirmNo" type="button">No</button>
-      </div>
     </div>
-
     <script src="popup.js"></script>
 </body>
 </html>
