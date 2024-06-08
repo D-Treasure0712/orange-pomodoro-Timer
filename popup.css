@@ -292,7 +292,6 @@ body {
   font-size: 20;
   font-weight: bold;
   z-index: 1;
-  margin-bottom: 1rem; /* 下部のマージンを追加 */
 }
 p{
   color: black;

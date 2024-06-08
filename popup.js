@@ -121,8 +121,8 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 */
 
-  var times = 5; // 残り秒数 (25分)
-  var times_interval = 5; // interval time 5min
+  var times = 25 * 60; // 残り秒数 (25分)
+  var times_interval = 5 * 60; // interval time 5min
   var circleElement = document.querySelector('.circle2');
   changeTimes(times);
   var reset_times = false;
