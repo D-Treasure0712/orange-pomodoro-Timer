@@ -5,29 +5,31 @@
 body {
   display: grid;
   place-items: center;
-  width: 60%; /* 全体の横幅を60%に縮小 */
+  width: 300px; /* 全体の横幅を60%に縮小 */
   margin: 1rem auto; /* 上下左右にマージンを追加 */
-  grid-template-columns: 1fr; /* グリッドカラムを1列に変更 */
-  grid-template-rows: auto auto 1fr; /* グリッドテンプレートの行を調整 */
+  /* grid-template-columns: 1fr;*/ /* グリッドカラムを1列に変更 */
+  /*grid-template-rows: auto auto 1fr;*/ /* グリッドテンプレートの行を調整 */
 }
 
-#selects {
+#selects > div {
   display: flex;
   justify-content: space-around; /* ボタンを等間隔で配置 */
-  margin-bottom: 1rem; /* 下部のマージンを追加 */
+  /*margin-bottom: 1rem; /* 下部のマージンを追加 */
 }
 
 .circle2 {
   width: 200px;
   height: 200px;
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr;
+  /*grid-template-columns: 1fr;
+  grid-template-rows: 1fr;*/
+  place-items: center;
   background-color: rgb(123, 123, 255); /* 円の背景色 */
   border-radius: 50%; /* 円形にする */
-  position: relative;
-  overflow: hidden;
-  margin-bottom: 1rem; /* 下部のマージンを追加 */
+  /*position: relative;
+  overflow: hidden;*/
+  /*margin-bottom: 1rem; /* 下部のマージンを追加 */
+  margin-top: 1rem; /* 上部のマージンを追加 */
 }
 
 #selected-task-display {
