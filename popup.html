@@ -7,15 +7,13 @@
     <link rel="stylesheet" href="popup.css">
 </head>
 <body>
-    <div id="selects">
-        <div>
-            <button onclick="startAnimation()">Start Animation</button>
-            <button onclick="all_reset()">Reset Animation</button>
-        </div>
-        <div>
-            <label for="time">時間（分）：</label>
-            <input type="number" id="time" name="time" min="1" max="99" value="25" oninput="changeTimes(this.value);">
-        </div>
+    <div class="circle3">
+        <div class="triangle10" id="triangle10"></div>
+        <div class="triangle20" id="triangle20"></div>
+        <div class="triangle30" id="triangle30"></div>
+        <div class="triangle40" id="triangle40"></div>
+        <div class="triangle50" id="triangle50"></div>
+        <div class="triangle60" id="triangle60"></div>
     </div>
     
     <div class="circle2">
@@ -52,5 +50,17 @@
     </div>
 
     <script src="popup.js"></script>
+    <div id="selects">
+        <!-- <div>
+            <button onclick="startAnimation()">START / STOP</button>
+            <button onclick="all_reset()">RESET</button>
+        </div> -->
+        <div>
+            <button id="startStopButton">START</button>
+            <button id="stopButton">STOP</button>
+            <button id="resatartButton">RESTART</button>
+            <!-- <button id="resetButton">RESET</button> -->
+        </div>        
+    </div>
 </body>
 </html>
