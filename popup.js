@@ -4,8 +4,8 @@ document.addEventListener('DOMContentLoaded', function() {
   var reset_times = false;
   var isTimerCompleted = false;
 
-  function changeTimes(minutes) {
-    var seconds = minutes * 60;
+  function changeTimes(seconds) {
+    // var seconds = minutes * 60;
     updateCurrentSeconds(seconds);
   }
 
@@ -17,7 +17,18 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function updateCurrentSeconds(seconds) {
-    document.getElementById('currentSeconds').textContent = Math.floor(seconds);
+    let minutes = Math.floor(seconds / 60);
+    let remainingSeconds = Math.floor(seconds % 60);
+
+    // Add leading zero if necessary
+    if (minutes < 10) {
+      minutes = '0' + minutes;
+    }
+    if (remainingSeconds < 10) {
+      remainingSeconds = '0' + remainingSeconds;
+    }
+
+    document.getElementById('currentSeconds').textContent = minutes + ':' + remainingSeconds;
   }
 
 // 中心角を変更する関数
@@ -44,12 +55,13 @@ function changeAngle(angle, times_animat) {
     reset_angle();
   }
 
-  // 現在の秒数を更新
-  if (times_animat - (angle / 360 * times_animat) > 0) {
-    updateCurrentSeconds(times_animat - (angle / 360 * times_animat));
-  } else {
-    updateCurrentSeconds(0);
-  }
+    // 現在の秒数を更新
+    let remainingSeconds = times_animat - (angle / 360 * times_animat);
+    if (remainingSeconds > 0) {
+      updateCurrentSeconds(remainingSeconds);
+    } else {
+      updateCurrentSeconds(0);
+    }
 }
 
   function reset_angle() {
