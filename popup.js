@@ -4,6 +4,16 @@ const taskList = document.getElementsByClassName('task_list')[0];
 const selectedTaskDisplay = document.getElementById('selected-task-display');
 let taskToDelete = null;
 
+// キーダウンイベントをリッスンする最悪の手段
+document.addEventListener('keydown', function(event) {
+  // Enterキーが押された場合
+  if (event.key === 'Enter' || event.keyCode === 13) {
+    // イベントをキャンセルする
+    event.preventDefault();
+    // 何も実行しない
+  }
+});
+
 // 追加ボタンを作成
 const addTasks = (task) => {
   // 入力したタスクを追加・表示
@@ -82,8 +92,8 @@ taskSubmit.addEventListener('click', evt => {
   taskValue.value = '';
 });
 
-taskSubmit.addEventListener("keydown", (e) => {
-  if (e.key === "Enter") {
+taskSubmit.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
       e.preventDefault();
       const task = taskValue.value;
       addTasks(task);
