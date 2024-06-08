@@ -1,20 +1,34 @@
 document.addEventListener('DOMContentLoaded', function() {
-  var times = 1 * 60; // 残り秒数 (25分)
-  var times_interval = 5 * 60 // interval time 5min
+  var times = 10; // 残り秒数 (25分)
+  var times_interval = 5 // interval time 5min
   changeTimes(times);
   var reset_times = false;
   var isTimerCompleted = false;
   var interval_session = false;
+  const sleep = (time) => new Promise((resolve) => setTimeout(resolve, time));//timeはミリ秒
 
   function changeTimes(seconds) {
     // var seconds = minutes * 60;
     updateCurrentSeconds(seconds);
   }
 
-  function startAnimation() {
+  async function startAnimation() {
     if (!reset_times) {
       reset_times = true;
       smoothTransition(times);
+      // let set = 1;
+      // let count_limit = set * 2;
+      // for(let count = 0; count < count_limit; count++){
+      //   if(interval_session == false){
+      //     smoothTransition(times);
+      //     await sleep(times*1000);
+      //     smoothTransition(times_interval);
+      //   }else{
+      //     smoothTransition(times_interval);
+      //     await sleep(times_interval*1000);
+      //   }
+      //   interval_session = !interval_session;
+      // }
     }
   }
 
