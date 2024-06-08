@@ -14,6 +14,8 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   async function startAnimation() {
+    startButton.style.display = 'none';
+    stopButton.style.display = '';
     if (!reset_times) {
       reset_times = true;
       // smoothTransition(times);
@@ -115,6 +117,8 @@ document.addEventListener('DOMContentLoaded', function() {
     var triangleElements = document.querySelectorAll('.triangle10, .triangle20, .triangle30, .triangle40, .triangle50, .triangle60');
     for (var i = 0; i < triangleElements.length; i++) {
       triangleElements[i].style.setProperty('--angle', 0);
+      startButton.style.display = '';
+      stopButton.style.display = 'none';
     }
   }
 
@@ -151,7 +155,14 @@ document.addEventListener('DOMContentLoaded', function() {
   // var resetButton = document.querySelector('button[onclick="all_reset()"]');
   var startButton = document.getElementById('startStopButton');
   var resetButton = document.getElementById('resetButton');
+  var stopButton = document.getElementById('stopButton');
+  var restartButton = document.getElementById('resatartButton');
+
+  stopButton.style.display = 'none';
+  restartButton.style.display = 'none';
 
   startButton.addEventListener('click', startAnimation);
   resetButton.addEventListener('click', all_reset);
+  // stopButton.addEventListener("click", stop); 
+
 });
