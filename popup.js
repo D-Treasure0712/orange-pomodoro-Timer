@@ -1,9 +1,30 @@
-const taskValue = document.getElementsByClassName('task_value')[0];
+/* popup.js */
+
+/* 
+------------------------------------------------------------
+HTML要素の取得
+taskValue、taskSubmit、taskList、selectedTaskDisplayは、各要素のクラス名やID名を基にHTMLの要素を取得します。
+taskToDeleteは、削除するタスクを一時的に保持するための変数です。
+------------------------------------------------------------
+*/
+//constは定数を宣言するためのキーワード（再代入不可）
+//document:現在のHTML全体を示すオブジェクト
+//getElementsByClassName:documentオブジェクトのメソッド
+taskValue = document.getElementsByClassName('task_value')[0];
 const taskSubmit = document.getElementsByClassName('task_submit')[0];
 const taskList = document.getElementsByClassName('task_list')[0];
 const selectedTaskDisplay = document.getElementById('selected-task-display');
 let taskToDelete = null;
 
+
+
+/* 
+-----------------------------------------------------------
+キーダウンイベントのリッスン
+ドキュメント全体に対してkeydownイベントのリスナーを追加する
+ここでは，Enterキーが押されたとき，デフォルトの動作をキャンセル（なにもしないように）する
+-----------------------------------------------------------
+*/
 // キーダウンイベントをリッスンする最悪の手段
 document.addEventListener('keydown', function(event) {
   // Enterキーが押された場合
@@ -14,76 +35,82 @@ document.addEventListener('keydown', function(event) {
   }
 });
 
-// 追加ボタンを作成
+
+
+/*
+-------------------------------------------------------------------
+タスクの追加機能
+addTasks関数：タスクを追加するための関数です。
+listItemを作成してタスクの内容を設定します。
+削除、編集、選択ボタンを追加します。
+各ボタンにイベントリスナーを追加します。
+-------------------------------------------------------------------
+*/
+//関数宣言
 const addTasks = (task) => {
-  // 入力したタスクを追加・表示
+  //定数の宣言：新しく作成された<li>要素を保持
   const listItem = document.createElement('li');
+
+  //定数の宣言：tasklist要素にlistItem要素を子として受け取る
   const showItem = taskList.appendChild(listItem);
+
+  //リストアイテムの内容をタスクの内容に設定
   showItem.innerHTML = task;
   
 
-  // タスクに削除ボタンを付与
+  // 削除・編集・選択ボタンの作成
   const deleteButton = document.createElement('button');
-  const editButton = document.createElement('button');
-  const SelectButton = document.createElement('button');
-  deleteButton.innerHTML = 'Delete';
-  listItem.appendChild(deleteButton);
-  SelectButton.innerHTML = 'Select';
-  listItem.appendChild(SelectButton);
-  editButton.innerHTML = 'Edit';
-  listItem.appendChild(editButton);
 
+  //ボタンの表示テキストをDeleteにする
+  deleteButton.innerHTML = 'Finish!';
+
+  //deleteButtunをlistItem要素の子として追加
+  listItem.appendChild(deleteButton);
+
+/*
+-----------------------------------------------------------
+削除ボタンクリック時のイベント発動
+-----------------------------------------------------------
+*/
   // 削除ボタンをクリックし、イベントを発動（タスクが削除）
   deleteButton.addEventListener('click', evt => {
+    //イベントのデフォルト動作をキャンセル
     evt.preventDefault();
+
+    //taskToDelete変数にdeleteButtonを代入（後で削除するボタンが特定される）
     taskToDelete = deleteButton;
+
+    //confirmDialog要素の表示スタイルを'flex'に設定し、ダイアログを表示します。
     confirmDialog.style.display = 'flex';
-    // deleteTasks(deleteButton);
   });
-
-  // 選択ボタンをクリックし、イベントを発動
-  SelectButton.addEventListener('click', evt => {
-    evt.preventDefault();
-    displaySelectedTask(task);
-  });
-
-//編集機能（ボタン）
-  editButton.addEventListener('click', evt => {
-    evt.preventDefault();
-    editTasks(editButton);
-  });
-
 };
 
-// 選択されたタスク名を表示する関数
-function displaySelectedTask(task) {
-  selectedTaskDisplay.textContent = task;
-}
 
 
-
+/*
+-------------------------------------------------
+タスクの削除機能
+deleteTasks関数：指定されたタスクを削除するための関数です。
+chosenTaskを取得し、リストから削除します。
+loadTasks関数でタスクを読み込み、削除されたタスクを配列から削除します。
+-------------------------------------------------------------------
+*/
 // 削除ボタンにタスクを消す機能を付与
-const deleteTasks = (deleteButton) => {
+const deleteTasks = (deleteButton, task) => {
   const chosenTask = deleteButton.closest('li');
   taskList.removeChild(chosenTask);
   selectedTaskDisplay.textContent = ''; // 選択されたタスク名をクリア
 };
 
-// 編集機能
-const editTasks = (editButton) => {
-    const taskList = editButton.closest('li');
-    const taskText = taskList.firstChild.textContent;
-  
-    // プロンプトでタスクの新しい内容を入力
-    const newTaskText = prompt('新しいタスク内容を入力してください', taskText);
-  
-    // 新しい内容が入力された場合
-    if (newTaskText !== null && newTaskText.trim() !== '') {
-      // タスクの内容を更新
-      taskList.firstChild.textContent = newTaskText;
-    };
-};
-  
+
+/* 
+---------------------------------------------------------------------------
+タスクの追加ボタンのイベントリスナー
+追加ボタンをクリックしたときの処理です。
+フォームのデフォルトの動作をキャンセルします。
+タスクを追加し、ローカルストレージに保存します。
+----------------------------------------------------------------------------
+*/
 // 追加ボタンをクリックし、イベントを発動（タスクが追加）
 taskSubmit.addEventListener('click', evt => {
   evt.preventDefault();
@@ -92,15 +119,15 @@ taskSubmit.addEventListener('click', evt => {
   taskValue.value = '';
 });
 
-taskSubmit.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter') {
-      e.preventDefault();
-      const task = taskValue.value;
-      addTasks(task);
-      //taskValue.value = '';}
-  }
-});
 
+/*
+----------------------------------------------------------------------------
+削除時の確認ダイヤログのボタンのイベントリスナー
+confirmYesとconfirmNoのクリックイベントをリッスンします。
+Yesボタンがクリックされた場合、タスクを削除します。
+Noボタンがクリックされた場合、ダイアログを非表示にします。
+-----------------------------------------------------------------------------
+*/
 // 確認ダイアログのボタンのイベントリスナー
 confirmYes.addEventListener('click', () => {
   deleteTasks(taskToDelete);
