@@ -155,6 +155,127 @@ body {
   border-right: calc(var(--radius) * 1.25 * sin(calc(var(--angle) * 1deg))) solid transparent;
   border-top: calc(var(--radius) * 1.25 * cos(calc(var(--angle) * 1deg))) solid rgb(157, 222, 139);
 }
+.circle3 {
+  width: 200px;
+  height: 200px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  grid-column: 2/5;
+  grid-row: 2/5;
+  background-color: rgb(157, 222, 139); /* 円の背景色 */
+  border-radius: 50%; /* 円形にする */
+  position: relative;
+  overflow: hidden;
+}
+.triangle10{
+  height: auto;
+  width: auto;
+  display: grid;
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+.triangle20{
+  height: auto;
+  width: auto;
+  display: grid;
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+.triangle30{
+  height: auto;
+  width: auto;
+  display: grid;
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+.triangle40{
+  height: auto;
+  width: auto;
+  display: grid;
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+.triangle50{
+  height: auto;
+  width: auto;
+  display: grid;
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+.triangle60{
+  height: auto;
+  width: auto;
+  display: grid;
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+.triangle10::before {
+  content: "";
+  width: 0;
+  height: 0;
+  grid-column: 1/2;
+  grid-row: 1/2;
+  transform: translate(calc(var(--radius) / 2), calc(var(--radius) / 2 - var(--radius) * 1.25 * cos(calc(var(--angle) * 1deg))));
+  transform-origin: left bottom; /* 中心を縦横の中心に設定 */
+  border-right: calc(var(--radius) * 1.25 * sin(calc(var(--angle) * 1deg))) solid transparent;
+  border-top: calc(var(--radius) * 1.25 * cos(calc(var(--angle) * 1deg))) solid rgb(0, 103, 105);
+}
+.triangle20::before {
+  content: "";
+  width: 0;
+  height: 0;
+  grid-column: 1/2;
+  grid-row: 1/2;
+  transform-origin: left bottom; /* 中心を縦横の中心に設定 */
+  transform: translate(calc(var(--radius) / 2), calc(var(--radius) / 2 - var(--radius) * 1.25 * cos(calc(var(--angle) * 1deg)))) rotate(60deg);
+  border-right: calc(var(--radius) * 1.25 * sin(calc(var(--angle) * 1deg))) solid transparent;
+  border-top: calc(var(--radius) * 1.25 * cos(calc(var(--angle) * 1deg))) solid rgb(0, 103, 105);
+}
+.triangle30::before {
+  content: "";
+  width: 0;
+  height: 0;
+  grid-column: 1/2;
+  grid-row: 1/2;
+  transform-origin: left bottom; /* 中心を縦横の中心に設定 */
+  transform: translate(calc(var(--radius) / 2), calc(var(--radius) / 2 - var(--radius) * 1.25 * cos(calc(var(--angle) * 1deg)))) rotate(120deg);
+  border-right: calc(var(--radius) * 1.25 * sin(calc(var(--angle) * 1deg))) solid transparent;
+  border-top: calc(var(--radius) * 1.25 * cos(calc(var(--angle) * 1deg))) solid rgb(0, 103, 105);
+}
+.triangle40::before {
+  content: "";
+  width: 0;
+  height: 0;
+  grid-column: 1/2;
+  grid-row: 1/2;
+  transform-origin: left bottom; /* 中心を縦横の中心に設定 */
+  transform: translate(calc(var(--radius) / 2), calc(var(--radius) / 2 - var(--radius) * 1.25 * cos(calc(var(--angle) * 1deg)))) rotate(180deg);
+  border-right: calc(var(--radius) * 1.25 * sin(calc(var(--angle) * 1deg))) solid transparent;
+  border-top: calc(var(--radius) * 1.25 * cos(calc(var(--angle) * 1deg))) solid rgb(0, 103, 105);
+}
+.triangle50::before {
+  content: "";
+  width: 0;
+  height: 0;
+  grid-column: 1/2;
+  grid-row: 1/2;
+  transform-origin: left bottom; /* 中心を縦横の中心に設定 */
+  transform: translate(calc(var(--radius) / 2), calc(var(--radius) / 2 - var(--radius) * 1.25 * cos(calc(var(--angle) * 1deg)))) rotate(240deg);
+  border-right: calc(var(--radius) * 1.25 * sin(calc(var(--angle) * 1deg))) solid transparent;
+  border-top: calc(var(--radius) * 1.25 * cos(calc(var(--angle) * 1deg))) solid rgb(0, 103, 105);
+}
+.triangle60::before {
+  content: "";
+  width: 0;
+  height: 0;
+  grid-column: 1/2;
+  grid-row: 1/2;
+  transform-origin: left bottom; /* 中心を縦横の中心に設定 */
+  transform: translate(calc(var(--radius) / 2), calc(var(--radius) / 2 - var(--radius) * 1.25 * cos(calc(var(--angle) * 1deg)))) rotate(300deg);
+  border-right: calc(var(--radius) * 1.25 * sin(calc(var(--angle) * 1deg))) solid transparent;
+  border-top: calc(var(--radius) * 1.25 * cos(calc(var(--angle) * 1deg))) solid rgb(0, 103, 105);
+}
 .currentSeconds{
   grid-column: 1/2;
   grid-row: 1/2;
