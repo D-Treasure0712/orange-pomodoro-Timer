@@ -47,7 +47,17 @@ body {
   font-weight: bold; /* 太字にする */
   font-family: Rubik Mono One;
 }
-
+#createTabButton {
+  background-color: rgb(255, 44, 44); /* 緑色 */
+  color: white; /* 文字色を白に変更 */
+  border: none;
+  padding: 10px 20px; /* 余白の設定 */
+  border-radius: 5px; /* 角丸にする */
+  font-family: Rubik Mono One;
+}
+#createTabButton:hover {
+  background-color: darkred; /* 押された後の背景色を設定 */
+}
 .circle {
   width: 60px;
   height: 60px;
