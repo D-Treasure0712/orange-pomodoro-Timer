@@ -13,12 +13,13 @@ body {
   margin: 13px 0;
   background-color: rgb(20, 30, 36);
 }
+
 #selects {
   height: 100%;
   width: 100%;
   grid-column: 1/6;
-  grid-row: 8/11;
-  display: grid;
+  grid-row: 5/6;
+  display: grid; 
   align-items: center;
   justify-content: center;
   padding: 15px;
@@ -338,29 +339,70 @@ p{
 }
 h1 {
   text-align: center; /* テキストを中央揃え */
-  margin-bottom: 1rem; /* 下部のマージンを追加 */
+  /* margin-bottom: 1rem; /* 下部のマージンを追加 */
+  color: rgb(254, 130, 42);
+  grid-column: 1/-1;
+  grid-row: 7/8;
 }
 
 form {
   text-align: center; /* フォームの要素を中央揃え */
-  margin-bottom: 1rem; /* 下部のマージンを追加 */
+ /*  margin-bottom: 1rem; /* 下部のマージンを追加 */
+  grid-column: 1/-1;
+  grid-row: 8/9;
+  width: 100%;
+  color: white;
 }
 
 #table {
   background-color: skyblue;
-  width: 80%; /* 横幅を80%に変更 */
+  width: 80%; /* 横幅を70%に変更 */
+  max-width: 600px; /* 最大幅を設定 */
   border-radius: 1rem;
-  margin-bottom: 1rem; /* 下部のマージンを追加 */
+  margin: 1rem auto; /* 自動マージンで中央揃え */
+  padding: 1rem; /* 内側のパディングを追加 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* シャドウを追加 */
+  grid-column: 1 / -1;
+  grid-row: 10 / 11;
 }
 
 #table h2 {
-  text-align: center; /* テキストを中央揃え */
-  margin-top: 0.5rem; /* 上部のマージンを追加 */
-  margin-bottom: 0.5rem; /* 下部のマージンを追加 */
+  text-align: center;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem; /* フォントサイズを大きく */
+  color: #333; /* 色を変更して強調 */
 }
 
-li {
-  margin: 0.5rem 0; /* 上下のマージンを追加 */
+.task_list {
+  list-style-type: none; /* デフォルトのリストスタイルを無効に */
+  padding: 0;
+  margin: 0;
+}
+
+.task_list li {
+  background-color: white; /* 背景色を白に */
+  margin: 0.5rem 0; /* 各項目の上下にマージンを追加 */
+  padding: 0.5rem; /* 内側のパディングを追加 */
+  border-radius: 0.5rem; /* 角を丸める */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 各項目にもシャドウを追加 */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task_list li button {
+  margin-left: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  border: none;
+  border-radius: 0.25rem;
+  background-color: #007bff; /* ボタンの背景色を変更 */
+  color: white; /* ボタンの文字色を白に */
+  cursor: pointer;
+}
+
+.task_list li button:hover {
+  background-color: #0056b3; /* ホバー時の背景色を変更 */
 }
 
 .dialog {
