@@ -408,7 +408,7 @@ form button:hover {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
   font-size: 1.5rem; /* フォントサイズを大きく */
-  color: #333; /* 色を変更して強調 */
+  color: rgb(34,139,34); /* 色を変更して強調 */
   font-weight: bold; /* 太字にする */
   font-size: 30px; /* フォントサイズを大きくする */
   -webkit-text-stroke: 1px white;
@@ -435,6 +435,7 @@ form button:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border: 2px solid rgb(20, 30, 36); /* オレンジ色のボーダーを追加 */
 }
 
 .task_list li button {
