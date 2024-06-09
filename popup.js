@@ -184,7 +184,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   async function startAnimation() {
     startButton.style.display = 'none';
-    // stopButton.style.display = '';
+    stopButton.style.display = '';
     if (!reset_times) {
       reset_times = true;
       // smoothTransition(times);
