@@ -18,6 +18,16 @@ let taskToDelete = null;
 
 
 
+// ポップアップウィンドウを閉じないようにする
+window.addEventListener('blur', function(event) {
+  event.preventDefault();
+  window.focus();
+}, false);
+
+// マウスクリックでポップアップウィンドウを閉じないようにする
+document.addEventListener('mousedown', function(event) {
+  event.stopPropagation();
+}, true);
 /* 
 -----------------------------------------------------------
 キーダウンイベントのリッスン
@@ -157,9 +167,19 @@ document.addEventListener('DOMContentLoaded', function() {
   var interval_session = false;
   const sleep = (time) => new Promise((resolve) => setTimeout(resolve, time));//timeはミリ秒
 
+
   function changeTimes(seconds) {
     // var seconds = minutes * 60;
     updateCurrentSeconds(seconds);
+  }
+
+  async function createTab() {
+    chrome.tabs.create({ url: "popup.html", active: true });
+    window.addEventListener("blur", function() {
+      chrome.tabs.getCurrent(function(tab) {
+        chrome.tabs.update(tab.id, { active: true });
+      });
+    });
   }
 
   async function startAnimation() {
@@ -303,15 +323,19 @@ document.addEventListener('DOMContentLoaded', function() {
   // var startButton = document.querySelector('button[onclick="startAnimation()"]');
   // var resetButton = document.querySelector('button[onclick="all_reset()"]');
   var startButton = document.getElementById('startStopButton');
+  var createTabButton = document.getElementById('createTabButton');
   var resetButton = document.getElementById('resetButton');
   var stopButton = document.getElementById('stopButton');
   var restartButton = document.getElementById('resatartButton');
+
 
   stopButton.style.display = 'none';
   restartButton.style.display = 'none';
 
   startButton.addEventListener('click', startAnimation);
+  createTabButton.addEventListener('click', createTab);
   resetButton.addEventListener('click', all_reset);
+
   // stopButton.addEventListener("click", stop); 
 
 });
